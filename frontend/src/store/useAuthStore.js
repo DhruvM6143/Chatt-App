@@ -21,7 +21,7 @@ export const useAuthStore = create((set, get) => ({
             localStorage.setItem('authUser', JSON.stringify(res.data)); // Persist authUser
             get().connectSocket();
         } catch (error) {
-            console.log(error);
+
             set({ authUser: null });
             localStorage.removeItem('authUser'); // Clear storage on failure
         } finally {
