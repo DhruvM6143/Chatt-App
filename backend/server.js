@@ -19,8 +19,8 @@ app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 app.use(
     cors({
         origin: "https://chatt-app-frontend.vercel.app",
-        methods: ["GET", "POST"],
-        credentials: true,
+        
+        credentials: true
     })
 );
 
