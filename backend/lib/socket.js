@@ -8,8 +8,8 @@ const server = http.createServer(app)
 
 const io = new Server(server, {
     cors: {
-        origin: "https://chatt-app-frontend.vercel.app",
-        methods: ["GET", "POST"],
+        origin: ["https://chatt-app-frontend.vercel.app"],
+        
     }
 })
 
