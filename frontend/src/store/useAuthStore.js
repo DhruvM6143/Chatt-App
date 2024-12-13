@@ -3,7 +3,7 @@ import { axiosInstance } from '../lib/axios';
 import toast from 'react-hot-toast';
 import { io } from 'socket.io-client';
 
-const BASE_URL = "https://chatt-app-backend.vercel.app";
+const BASE_URL = "wss://chatt-app-backend.vercel.app";
 
 export const useAuthStore = create((set, get) => ({
     authUser: JSON.parse(localStorage.getItem('authUser')) || null, // Initialize from localStorage
