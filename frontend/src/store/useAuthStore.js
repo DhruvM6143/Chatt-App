@@ -108,6 +108,7 @@ export const useAuthStore = create((set, get) => ({
         if (!authUser) return; // Return if user is not authenticated
 
         const socket = io(BASE_URL, {
+            transports: ["websocket", "polling"],
             query: { userId: authUser._id }, // Passing user ID to the server
         });
 
