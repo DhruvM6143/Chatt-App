@@ -26,6 +26,10 @@ app.use(
 
 app.use('/api/auth', authRoutes)
 app.use('/api/messages', messageRoute)
+
+app.use('/',(req,res)=>{
+    res.send("server is working");
+})
 server.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
     connectDB()
