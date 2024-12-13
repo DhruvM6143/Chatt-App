@@ -20,7 +20,7 @@ app.use(
     cors({
         origin: "https://chatt-app-frontend.vercel.app",
     methods: ["GET", "POST"],
-        credentials:true
+        Credentials:true
     })
 );
 
