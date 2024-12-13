@@ -4,7 +4,7 @@ import SideBarSkeleton from './Skeleton/SideBarSkeleton'
 import { Users } from 'lucide-react'
 import { useAuthStore } from '../store/useAuthStore'
 import { io } from 'socket.io-client'
-const socket = io('https://chatt-app-backend.vercel.app')
+const socket = io('wss://chatt-app-backend.vercel.app')
 const Sidebar = () => {
     const { users, getUsers, setUsers, selectedUser, setSelectedUser, isUsersLoading } = useChatStore()
     const { onlineUsers, setOnlineUsers } = useAuthStore()
