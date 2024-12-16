@@ -56,6 +56,8 @@ export const sendMessage = async (req, res) => {
         })
         await newMessage.save()
 
+        const senderDetails = await user.findById(senderId).select("-password")
+
 
 
         const receiverSocketId = getReceiverSocketId(receiverId)

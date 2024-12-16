@@ -34,7 +34,7 @@ const ProfilePage = () => {
             }
         };
     };
-    console.log(authUser);
+
 
 
     useEffect(() => {

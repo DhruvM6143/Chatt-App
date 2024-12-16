@@ -4,7 +4,7 @@ import SideBarSkeleton from './Skeleton/SideBarSkeleton'
 import { Users } from 'lucide-react'
 import { useAuthStore } from '../store/useAuthStore'
 import { io } from 'socket.io-client'
-const socket = io('wss://chatt-app-backend.vercel.app')
+const socket = io('http://localhost:5000')
 const Sidebar = () => {
     const { users, getUsers, setUsers, selectedUser, setSelectedUser, isUsersLoading } = useChatStore()
     const { onlineUsers, setOnlineUsers } = useAuthStore()
@@ -30,13 +30,28 @@ const Sidebar = () => {
             // Cleanup listeners
             socket.off('new-user');
             socket.off('userStatusChanged');
+            socket.off('newMessage');
         };
     }, [setUsers, setOnlineUsers]);
 
-    // Derive filtered users based on online filter
-    const filteredUsers = showOnline
-        ? users.filter((user) => onlineUsers.includes(user._id))
-        : users;
+
+    const filteredUsers = users
+        .filter((user) => (showOnline ? onlineUsers.includes(user._id) : true))
+        .sort((a, b) => {
+
+            const isAOnline = onlineUsers.includes(a._id);
+            const isBOnline = onlineUsers.includes(b._id);
+            if (isAOnline && !isBOnline) return -1;
+            if (!isAOnline && isBOnline) return 1;
+
+
+            const aLastMessage = a.lastMessage?.timestamp || 0;
+            const bLastMessage = b.lastMessage?.timestamp || 0;
+            if (aLastMessage !== bLastMessage) return bLastMessage - aLastMessage;
+
+
+            return a.fullName.localeCompare(b.fullName);
+        });
 
 
 

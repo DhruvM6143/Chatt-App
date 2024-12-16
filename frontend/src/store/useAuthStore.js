@@ -3,7 +3,7 @@ import { axiosInstance } from '../lib/axios';
 import toast from 'react-hot-toast';
 import { io } from 'socket.io-client';
 
-const BASE_URL = "https://chatt-app-backend.vercel.app";
+const BASE_URL = 'http://localhost:5000';
 
 export const useAuthStore = create((set, get) => ({
     authUser: JSON.parse(localStorage.getItem('authUser')) || null, // Initialize from localStorage
@@ -108,11 +108,7 @@ export const useAuthStore = create((set, get) => ({
         if (!authUser) return; // Return if user is not authenticated
 
         const socket = io(BASE_URL, {
-            query: { userId: authUser._id },
-            withCredentials: true,
-            transports: ["websocket", "polling"],
-            
-             // Passing user ID to the server
+            query: { userId: authUser._id }, // Passing user ID to the server
         });
 
         socket.connect();
