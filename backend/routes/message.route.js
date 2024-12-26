@@ -4,7 +4,7 @@ import { getUserSideBar, sendMessage, getMessages } from '../controllers/message
 
 const messageRoute = express.Router()
 
-messageRoute.get('/users', getUserSideBar)
+messageRoute.get('/users',protecRoute, getUserSideBar)
 messageRoute.get('/:id', protecRoute, getMessages)
 messageRoute.post('/send/:id', protecRoute, sendMessage)
 
