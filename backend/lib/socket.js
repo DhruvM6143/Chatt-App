@@ -8,7 +8,7 @@ const server = http.createServer(app)
 
 const io = new Server(server, {
     cors: {
-        origin: ["https://chatt-app-backend-75bw.onrender.com"],
+        origin: ["https://chatt-app-frontend-kdr9.onrender.com"],
 
         credentials: true,
     }
